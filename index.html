@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Controle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Novo Controle</h1>
+        <section class="password" id="login">
+            <section>
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario">
+            </section>
+            <section>
+                <label for="senha">Senha</label>
+                <input type="password" id="senha">
+            </section>
+            <button id="btEntrar">Entrar</button>
+        </section>
+        <section id="cadastrar" class="cadastrar">
+            <section class="borda">
+                <section>
+                    <label for="valor">Valor</label>
+                    <input type="number" id="valor">
+                </section>
+                <section>
+                    <label for="descricao">Descrição</label>
+                    <input type="text" id="descricao">
+                </section>
+                <section>
+                    <label for="data">Data</label>
+                    <input type="date" id="data">
+                </section>
+                <section id="sectionSetor">
+                    <label for="selectSetor">Setor</label>
+                    <select id="selectSetor">
+                        <option selected>Selecione um Setor</option>
+                    </select>
+                    <button id="btCadastarSetor" class="abtn">Cadastrar Setor</button>
+                </section>
+                <section class="departamentos">
+                    <label for="selectDep">Departamento</label>
+                    <select id="selectDep">
+                    </select>
+                    <a href="cadastrarDep.html" class="abtn" id="btCadastrarDep">Cadastrar Departamento</a>
+                </section>
+                <section id="sectionMeioPagamento">
+                    <label for="meioPagamento">Meio de Pagamento</label>
+                    <select id="meioPagamento">
+                        <option selected>Selecione um Meio de Pagamento</option>
+                    </select>
+                    <a href="cadastrarMeioPagamento.html" class="abtn" id="btCadastrarMeioPagamento">Cadastrar Meio de Pagamento</a>
+                </section>
+                <section>
+                    <section>
+                        <button id="btSalvarItem" class="abtn">Salvar</button>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <!--Cadastrar Setor-->
+        <section id="cadastrarSetor">
+            <section class="borda">
+                <section>
+                    <label for="cadastrarSetor-setor">Nome do Setor</label>
+                    <input type="text" id="cadastrarSetor-setor">
+                </section>
+                <button id="cadastarSetor-salvar" class="abtn">Salvar</button>
+            </section>
+        </section>
+    </main>
+    <script type="module" src="script.js" defer></script>
+</body>
+</html>
