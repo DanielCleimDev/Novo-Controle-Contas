@@ -23,4 +23,8 @@ document.getElementById("btCadastrarDep").addEventListener("click", function(){
     sessionStorage.setItem('valorSetorSelecionado', document.getElementById("selectSetor").value);
 })
 
-document.getElementById("btSalvarItem").addEventListener("click", function(){salvarItem();})
+
+document.getElementById("formCadastrar").addEventListener("submit", function(event) {
+    event.preventDefault();
+    salvarItem();
+});

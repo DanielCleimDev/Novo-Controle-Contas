@@ -1,4 +1,5 @@
-import { salvar } from "../controler/salvar.js";
+import { salvarNovoItem } from "../controler/salvarNovoItem";
+
 
 export default class Item{
     constructor(valor, descricao, data,  setor, departamento, meioPagamento){
@@ -21,6 +22,6 @@ export default class Item{
             departamento: this.departamento,
             meioPagamento: this.meioPagamento
         }
-        salvar(item);
+        salvarNovoItem(item);
     }
 }

@@ -1,5 +1,5 @@
-export async function salvar (item) {
-  const tabela = "controleContas";
+export async function salvarNovoItem (item) {
+  const tabela = "controleContasNovoItem";
   fetch("https://2ih8obvwec.execute-api.us-east-1.amazonaws.com/items", {
     method: "PUT",
     headers: {

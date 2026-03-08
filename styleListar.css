@@ -1,0 +1,74 @@
+:root {
+  --primary: #2d3436;
+  --secondary: #636e72;
+  --accent: #00b894; /* Cor para o valor */
+  --bg-card: #ffffff;
+  --border: #dfe6e9;
+}
+
+.despesa-card {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  max-width: 400px;
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+
+.despesa-card h3 {
+  margin: 0 0 20px 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.despesa-card dl {
+  display: grid;
+  grid-template-columns: auto 1fr; /* Rótulo à esquerda, valor à direita */
+  gap: 12px 20px;
+  margin: 0;
+}
+
+.despesa-card dt {
+  color: var(--secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: center;
+}
+
+.despesa-card dd {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 500;
+  text-align: right; /* Alinha os valores à direita para facilitar leitura */
+}
+
+/* Estilo especial para o Valor */
+.despesa-card dd:nth-of-type(2) { 
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Estilo para o ID técnico */
+code {
+  background: #f1f2f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #a4b0be;
+}
+
+.container {
+  display: grid;
+  /* Define as 4 colunas de 21% cada */
+  grid-template-columns: repeat(4, 21%);
+  /* Define o gap de 3% entre as colunas */
+  column-gap: 3%;
+  /* Define o espaço externo de 3.5% */
+  padding: 0 3.5%;
+  row-gap: 20px;
+}
