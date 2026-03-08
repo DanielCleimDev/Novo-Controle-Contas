@@ -1,6 +1,6 @@
-.password{
-    display: flex;
-    justify-content: center;
+body{
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 main h1{

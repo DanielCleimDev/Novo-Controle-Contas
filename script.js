@@ -14,23 +14,13 @@ const btEntrar = document.getElementById("btEntrar");
 btEntrar.addEventListener("click", ()=>entrar());
 
 const btCadastarSetor = document.getElementById("btCadastarSetor");
-btCadastarSetor.addEventListener("click", function (){
-    cadastarSetor();
-})
+btCadastarSetor.addEventListener("click", function (){cadastarSetor();})
 
 const btCadastarSetor_salvar=document.getElementById("cadastarSetor-salvar");
-btCadastarSetor_salvar.addEventListener("click", function (){
-    salvarSetor(setores);
-})
+btCadastarSetor_salvar.addEventListener("click", function (){salvarSetor(setores);})
 
 document.getElementById("btCadastrarDep").addEventListener("click", function(){
     sessionStorage.setItem('valorSetorSelecionado', document.getElementById("selectSetor").value);
 })
 
-document.getElementById("btCadastrarMeioPagamento").addEventListener("click", function(){
-    console.log("Entrou")
-})
-
-document.getElementById("btSalvarItem").addEventListener("click", function(){
-    salvarItem();
-})
+document.getElementById("btSalvarItem").addEventListener("click", function(){salvarItem();})
