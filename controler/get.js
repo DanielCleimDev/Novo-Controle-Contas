@@ -5,3 +5,10 @@ export async function get(){
         console.log(error);
       });
 }
+export async function getDados() {
+  return fetch(`https://2ih8obvwec.execute-api.us-east-1.amazonaws.com/items/controleContasNovoItem`)
+      .then((response) => response.json())
+      .catch((error) => {
+        console.log(error);
+      });
+}

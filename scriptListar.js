@@ -1,38 +1,39 @@
-import { array } from "./controler/getTabelas.js";
+import { dados, setores,array } from "./controler/getTabelas.js";
+import { gerarCard } from "./controler/listar/gerarCard.js";
 
-let idsParaRemover = ["CasaDep","CarroDep","teste",	"tabelaSetor",	"CanilDep",	"meiosPagamento"]
 const listar = document.getElementById("itens");
-let arrayFiltrado= array.filter(item => !idsParaRemover.includes(item.id));
 
-arrayFiltrado.forEach(item => {
+dados.forEach(item => {
     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
 });
 
-function gerarCard(id,descricao,valor,departamento,setor,data,meioPagamento){
-    const dataFormatada = new Date(data).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
-    let html = `
-        <h3>Detalhes do Gasto</h3>
-        <dl>
-            <dt>Descrição</dt>
-            <dd>${descricao}</dd>
-    
-            <dt>Valor</dt>
-            <dd>R$ ${valor}</dd>
-    
-            <dt>Departamento / Setor</dt>
-            <dd>${departamento} (${setor})</dd>
-    
-            <dt>Data</dt>
-            <dd><time datetime="${data}">${dataFormatada}</time></dd>
-    
-            <dt>Meio de Pagamento</dt>
-            <dd>${meioPagamento}</dd>
-        </dl>
-    `;
 
-    const card = document.createElement("article")
-    card.classList.add("despesa-card")
-    card.id = id;
-    card.innerHTML = html;
-    return card;
-}
+const selectSetores = document.getElementById("setores")
+
+setores.forEach(element =>{
+    const option = document.createElement("option");
+    option.value = element;
+    option.textContent = element;
+    selectSetores.appendChild(option);
+})
+
+
+selectSetores.addEventListener("change", function (){
+    const sectionFiltro = document.getElementById("filtro");
+
+    const label = document.createElement("label");
+    label.textContent = "Departamentos";
+    sectionFiltro.appendChild(label);
+
+    const selectDepartamentos = document.createElement("select");
+    selectDepartamentos.id = "selectDepartamentos";
+    
+    array.find(item => item.id === (document.getElementById("setores").value + "Dep")).departamentos.forEach(element => {
+        const option = document.createElement("option");
+        option.value = element;
+        option.textContent = element;
+        selectDepartamentos.appendChild(option);
+    })
+
+    sectionFiltro.appendChild(selectDepartamentos);
+})
