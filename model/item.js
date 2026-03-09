@@ -1,4 +1,4 @@
-import { salvarNovoItem } from "../controler/salvarNovoItem";
+import { salvarNovoItem } from "../controler/salvarNovoItem.js";
 
 
 export default class Item{

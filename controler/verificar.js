@@ -3,5 +3,6 @@ export function verificar(){
     if(document.cookie == teste || localStorage.getItem("entrarNovoControle") == teste){
         document.getElementById("login").style.display = "none";
         document.getElementById("cadastrar").style.display = "flex";
+        document.querySelector(".listar").style.display = "block";
     }
 }

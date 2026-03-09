@@ -9,6 +9,7 @@ arrayFiltrado.forEach(item => {
 });
 
 function gerarCard(id,descricao,valor,departamento,setor,data,meioPagamento){
+    const dataFormatada = new Date(data).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
     let html = `
         <h3>Detalhes do Gasto</h3>
         <dl>
@@ -22,7 +23,7 @@ function gerarCard(id,descricao,valor,departamento,setor,data,meioPagamento){
             <dd>${departamento} (${setor})</dd>
     
             <dt>Data</dt>
-            <dd><time datetime="${data}">${data}</time></dd>
+            <dd><time datetime="${data}">${dataFormatada}</time></dd>
     
             <dt>Meio de Pagamento</dt>
             <dd>${meioPagamento}</dd>

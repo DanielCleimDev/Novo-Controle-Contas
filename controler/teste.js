@@ -18,6 +18,7 @@ export async function entrar(){
         alert("Usuário Logado");
         document.getElementById("login").style.display = "none";
         document.getElementById("cadastrar").style.display = "flex";
+        document.querySelector("listar").style.display = "block";
     }else{
         alert("Senha ou Usuário incorreto!");
     }
