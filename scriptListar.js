@@ -2,11 +2,17 @@ import { dados, setores,array } from "./controler/getTabelas.js";
 import { gerarCard } from "./controler/listar/gerarCard.js";
 
 const listar = document.getElementById("itens");
-
+dados.sort((a, b) => new Date(b.data) - new Date(a.data));
 dados.forEach(item => {
     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
 });
 
+function anosMeses(){
+    const sectionAnosMeses = document.getElementById("anosMeses")
+    const labelAnos = document.createElement("label");
+    labelAnos.textContent = "Ano: ";
+    sectionAnosMeses.appendChild(labelAnos)
+}
 
 const selectSetores = document.getElementById("setores")
 
@@ -17,16 +23,33 @@ setores.forEach(element =>{
     selectSetores.appendChild(option);
 })
 
-
+let selecionado = false;
 selectSetores.addEventListener("change", function (){
-    const sectionFiltro = document.getElementById("filtro");
 
-    const label = document.createElement("label");
-    label.textContent = "Departamentos";
-    sectionFiltro.appendChild(label);
+    console.log(this.value);
+
+    const dadosSetor = dados.filter(item => item.setor == this.value);
+    listar.replaceChildren();
+
+    if(dadosSetor.length >= 0 ){
+        dadosSetor.forEach(item => {
+            listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+        });
+    }
+    
+    const sectionFiltro = document.getElementById("filtro");
+    
+    if(selecionado){
+        document.getElementById("selectDepartamentos").remove();
+    }else{
+        const label = document.createElement("label");
+        label.textContent = "Departamentos";
+        sectionFiltro.appendChild(label);
+    }
 
     const selectDepartamentos = document.createElement("select");
     selectDepartamentos.id = "selectDepartamentos";
+    selectDepartamentos.innerHTML = "<option selected>Selecione um Departamento</option>"
     
     array.find(item => item.id === (document.getElementById("setores").value + "Dep")).departamentos.forEach(element => {
         const option = document.createElement("option");
@@ -34,6 +57,18 @@ selectSetores.addEventListener("change", function (){
         option.textContent = element;
         selectDepartamentos.appendChild(option);
     })
-
     sectionFiltro.appendChild(selectDepartamentos);
+    
+    document.getElementById("selectDepartamentos").addEventListener("change", function () {
+        const dadosDepartamento = dados.filter(item => item.departamento == this.value && item.setor == document.getElementById("setores").value);
+        listar.replaceChildren();
+        if(dadosDepartamento.length >= 1){
+            dadosDepartamento.forEach(item => {
+                listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+            });
+        }
+    })
+
+    selecionado = true;
 })
+
