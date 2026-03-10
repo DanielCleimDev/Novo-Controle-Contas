@@ -7,7 +7,7 @@ dados.forEach(item => {
     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
 });
 
-anosMeses()
+// anosMeses()
 
 function anosMeses(){
     const sectionAnosMeses = document.getElementById("anosMeses");
