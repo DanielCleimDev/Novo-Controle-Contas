@@ -7,11 +7,63 @@ dados.forEach(item => {
     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
 });
 
+anosMeses()
+
 function anosMeses(){
-    const sectionAnosMeses = document.getElementById("anosMeses")
+    const sectionAnosMeses = document.getElementById("anosMeses");
+    
+    //Gerando Anos
     const labelAnos = document.createElement("label");
     labelAnos.textContent = "Ano: ";
-    sectionAnosMeses.appendChild(labelAnos)
+    sectionAnosMeses.appendChild(labelAnos);
+    
+    const selectAnos = document.createElement("select");
+    selectAnos.id = "selectAnos";
+    selectAnos.innerHTML = "<option selected>Selecione o Ano</option>";
+
+    [...new Set(dados.map(item => item.data.split('-')[0]))].forEach(ano =>{
+        const option = document.createElement("option");
+        option.value = ano;
+        option.textContent = ano;
+        selectAnos.appendChild(option);
+    })
+
+    sectionAnosMeses.appendChild(selectAnos);
+
+    let anoSelecionado = false;
+    selectAnos.addEventListener("change", function(){
+        const labelMeses = document.createElement("label")
+        labelMeses.textContent = "Mês: ";
+        sectionAnosMeses.appendChild(labelMeses);
+    
+        const selectMeses = document.createElement("select");
+        selectMeses.id = "selectMeses";
+
+        selectMeses.innerHTML = "<option selected>Selecione o Mês</option>";
+
+        const anos = dados.filter(item => item.data.split('-')[0] == this.value);
+
+        const listar = document.getElementById("itens")
+        listar.replaceChildren();
+        
+        anos.forEach(item =>{
+            listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+        })
+
+        let meses =[...new Set(anos.map(item => item.data.split('-')[1]))]
+        
+        meses.forEach(item =>{
+            const option = document.createElement("option");
+            option.value = item;
+            option.textContent = item;
+            selectMeses.appendChild(option);
+        })
+        sectionAnosMeses.appendChild(selectMeses);
+
+        
+        anoSelecionado = true;
+    })
+
 }
 
 const selectSetores = document.getElementById("setores")
@@ -49,7 +101,7 @@ selectSetores.addEventListener("change", function (){
 
     const selectDepartamentos = document.createElement("select");
     selectDepartamentos.id = "selectDepartamentos";
-    selectDepartamentos.innerHTML = "<option selected>Selecione um Departamento</option>"
+    selectDepartamentos.innerHTML = "<option selected>Selecione um Departamento</option>";
     
     array.find(item => item.id === (document.getElementById("setores").value + "Dep")).departamentos.forEach(element => {
         const option = document.createElement("option");
