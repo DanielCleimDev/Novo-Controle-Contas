@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="styleListar.css">
 </head>
 <body>
-    <section id="filtro">
-        <section class="cabecalho">
-            <h1>Filtrar</h1><section id="anosMeses"></section>
+    <section class="containerSuperior">
+        <section id="filtro">
+            <section class="cabecalho">
+                <h1>Filtrar</h1><section id="anosMeses"></section>
+            </section>
+            <label for="setor">Setor</label>
+            <select id="setores">
+                <option selected>Selecione o Setor</option>
+            </select>
         </section>
-        <label for="setor">Setor</label>
-        <select id="setores">
-            <option selected>Selecione o Setor</option>
-        </select>
+        <section class="total">
+            <p id="total">Total: </p>
+        </section>
     </section>
     <main>
         <section class="container" id="itens">
