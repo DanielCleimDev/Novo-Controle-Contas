@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas</title>
+</head>
+<body>
+    <main id="vendas">
+
+    </main>
+    <style>
+        .venda-card {
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          padding: 16px;
+          max-width: 320px;
+          box-shadow: 0 2px 8px rgba(0,0,0,.08);
+          background: #fff;
+          font-family: Arial, sans-serif;
+        }
+        .venda-card .venda-titulo {
+          margin: 0 0 12px;
+          color: #333;
+        }
+        .venda-row {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 8px;
+          gap: 8px;
+        }
+        .venda-row span {
+          color: #666;
+        }
+        .venda-row strong,
+        .venda-row em {
+          color: #111;
+        }
+    </style>
+    <script type="module" src="controler/vendas/listarVendas.js"></script>
+</body>
+</html>
