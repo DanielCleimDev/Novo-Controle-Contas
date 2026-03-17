@@ -1,5 +1,4 @@
 import venda from '../../model/venda.js';
-import { listarVendas } from './listarVendas.js';
 
 const vendaForm = document.getElementById('vendaForm');
 const mensagem = document.getElementById('mensagem');
