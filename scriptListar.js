@@ -4,6 +4,7 @@ import { atualizarTotal } from "./controler/listar/total.js";
 
 const listar = document.getElementById("itens");
 const pTotal = document.getElementById("total");
+let dadosFiltrados = dados;
 let total = 0;
 
 dados.sort((a, b) => new Date(b.data) - new Date(a.data));
@@ -47,14 +48,14 @@ function anosMeses(){
 
         selectMeses.innerHTML = "<option selected>Selecione o Mês</option>";
 
-        const anos = dados.filter(item => item.data.split('-')[0] == this.value);
+        dadosFiltrados = dados.filter(item => item.data.split('-')[0] == this.value);
 
         const listar = document.getElementById("itens")
         listar.replaceChildren();
 
         //Calculando o total do ano selecionado
         let totalAno = 0;
-            anos.forEach(item =>{
+            dadosFiltrados.forEach(item =>{
             totalAno += parseInt(item.valor);
             listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
         })
@@ -62,7 +63,7 @@ function anosMeses(){
         
         
 
-        let meses =[...new Set(anos.map(item => item.data.split('-')[1]))]
+        let meses =[...new Set(dadosFiltrados.map(item => item.data.split('-')[1]))]
         
         meses.forEach(item =>{
             const option = document.createElement("option");
@@ -76,13 +77,13 @@ function anosMeses(){
         anoSelecionado = true;
         
         document.getElementById("selectMeses").addEventListener("change", function(){
-            const dadosMeses = dados.filter(item => item.data.split('-')[1] == this.value);
+            dadosFiltrados = dadosFiltrados.filter(item => item.data.split('-')[1] == this.value);
             listar.replaceChildren();
             
-            if(dadosMeses.length >= 1){
+            if(dadosFiltrados.length >= 1){
                 let totalMes = 0;
                                 
-                dadosMeses.forEach(item => {
+                dadosFiltrados.forEach(item => {
                     totalMes += parseInt(item.valor);
                     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
                 });
@@ -105,12 +106,12 @@ setores.forEach(element =>{
 let selecionado = false;
 selectSetores.addEventListener("change", function (){
 
-    const dadosSetor = dados.filter(item => item.setor == this.value);
+    dadosFiltrados = dadosFiltrados.filter(item => item.setor == this.value);
     listar.replaceChildren();
 
-    if(dadosSetor.length >= 0 ){
+    if(dadosFiltrados.length >= 0 ){
         let totalSetor = 0;
-        dadosSetor.forEach(item => {
+        dadosFiltrados.forEach(item => {
             totalSetor += parseInt(item.valor);
             listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
         });
@@ -140,11 +141,11 @@ selectSetores.addEventListener("change", function (){
     sectionFiltro.appendChild(selectDepartamentos);
     
     document.getElementById("selectDepartamentos").addEventListener("change", function () {
-        const dadosDepartamento = dados.filter(item => item.departamento == this.value && item.setor == document.getElementById("setores").value);
+        dadosFiltrados = dados.filter(item => item.departamento == this.value && item.setor == document.getElementById("setores").value);
         listar.replaceChildren();
-        if(dadosDepartamento.length >= 1){
+        if(dadosFiltrados.length >= 1){
             let totalDepartamento = 0;
-            dadosDepartamento.forEach(item => {
+            dadosFiltrados.forEach(item => {
                 totalDepartamento += parseInt(item.valor);
                 listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
             });
