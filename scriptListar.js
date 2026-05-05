@@ -48,7 +48,7 @@ function anosMeses(){
 
         selectMeses.innerHTML = "<option selected>Selecione o Mês</option>";
 
-        dadosFiltrados = dados.filter(item => item.data.split('-')[0] == this.value);
+        dadosFiltrados = dadosFiltrados.filter(item => item.data.split('-')[0] == this.value);
 
         const listar = document.getElementById("itens")
         listar.replaceChildren();
@@ -141,7 +141,7 @@ selectSetores.addEventListener("change", function (){
     sectionFiltro.appendChild(selectDepartamentos);
     
     document.getElementById("selectDepartamentos").addEventListener("change", function () {
-        dadosFiltrados = dados.filter(item => item.departamento == this.value && item.setor == document.getElementById("setores").value);
+        dadosFiltrados = dadosFiltrados.filter(item => item.departamento == this.value && item.setor == document.getElementById("setores").value);
         listar.replaceChildren();
         if(dadosFiltrados.length >= 1){
             let totalDepartamento = 0;
