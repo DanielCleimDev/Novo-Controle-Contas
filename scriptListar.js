@@ -16,6 +16,35 @@ pTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
 
 anosMeses()
 
+function limparFiltros(){
+    dadosFiltrados = dados;
+    listar.replaceChildren();
+    let total = 0;
+    dados.forEach(item => {
+        total += parseInt(item.valor);
+        listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+    });
+    pTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+    
+    document.getElementById("selectAnos").value = "Selecione o Ano";
+    if(document.getElementById("labelMeses")){
+        document.getElementById("labelMeses").remove();
+    }
+    if(document.getElementById("selectMeses")){
+        document.getElementById("selectMeses").remove();
+    }
+    document.getElementById("setores").value = "Selecione o Setor";
+    if(document.getElementById("labelDepartamentos")){
+        document.getElementById("labelDepartamentos").remove();
+    }
+    if(document.getElementById("selectDepartamentos")){
+        document.getElementById("selectDepartamentos").remove();
+    }
+    selecionado = false;
+}
+
+document.getElementById("btnLimpar").addEventListener("click", limparFiltros); 
+
 function anosMeses(){
     const sectionAnosMeses = document.getElementById("anosMeses");
     
@@ -40,6 +69,7 @@ function anosMeses(){
     let anoSelecionado = false;
     selectAnos.addEventListener("change", function(){
         const labelMeses = document.createElement("label")
+        labelMeses.id = "labelMeses";
         labelMeses.textContent = "Mês: ";
         sectionAnosMeses.appendChild(labelMeses);
     
@@ -124,6 +154,7 @@ selectSetores.addEventListener("change", function (){
         document.getElementById("selectDepartamentos").remove();
     }else{
         const label = document.createElement("label");
+        label.id = "labelDepartamentos";
         label.textContent = "Departamentos";
         sectionFiltro.appendChild(label);
     }
