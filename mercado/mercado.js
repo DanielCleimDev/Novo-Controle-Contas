@@ -33,6 +33,8 @@ function filtrarPorSemana(dataReferencia, lista) {
   fimSemana.setDate(inicioSemana.getDate() + 6);
   fimSemana.setHours(23, 59, 59, 999);
 
+  lista = lista.filter(item => item.departamento == "Mercado");
+
   return lista.filter(item => {
     const dataItem = parseData(item.data);
     return dataItem >= inicioSemana && dataItem <= fimSemana;
