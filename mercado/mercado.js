@@ -3,15 +3,34 @@ import { gerarCard } from "../controler/listar/gerarCard.js";
 import { atualizarTotal } from "../controler/listar/total.js";
 
 const listar = document.getElementById("itens");
+const btDiminuir = document.getElementById("diminuir");
+const btAumentar = document.getElementById("aumentar");
+
 let total = 0;
-let dadosSemana = filtrarPorSemana(new Date(), dados);
+let data = new Date();
 
-dadosSemana.forEach(item => {
-    total += parseInt(item.valor);
-    listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+atualizarLista();
+
+function atualizarLista() {
+    listar.replaceChildren();
+    total = 0;
+    let dadosSemana = filtrarPorSemana(data, dados);
+    dadosSemana.forEach(item => {
+        total += parseInt(item.valor);
+        listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
+    });
+    atualizarTotal(total, `Total da Semana`);
+}
+
+btDiminuir.addEventListener("click", () => {
+    data.setDate(data.getDate() - 7);
+    atualizarLista();
 });
-atualizarTotal(total, `Total da Semana`);
 
+btAumentar.addEventListener("click", () => {
+    data.setDate(data.getDate() + 7);
+    atualizarLista();
+});
 
 function parseData(dataStr) {
   const [ano, mes, dia] = dataStr.split('-');
@@ -38,5 +57,5 @@ function filtrarPorSemana(dataReferencia, lista) {
   return lista.filter(item => {
     const dataItem = parseData(item.data);
     return dataItem >= inicioSemana && dataItem <= fimSemana;
-  });
+  }).sort((a, b) => new Date(b.data) - new Date(a.data));
 }
