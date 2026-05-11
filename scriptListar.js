@@ -26,12 +26,7 @@ function limparFiltros(){
     document.getElementById("labelAnos").style.display = "";
 
     listar.replaceChildren();
-    let total = 0;
-    dados.forEach(item => {
-        total += parseInt(item.valor);
-        listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
-    });
-    atualizarTotal(total, `Total: `);
+    atualizarTotal(0, `Soma `);
     
     document.getElementById("selectAnos").value = "Selecione o Ano";
     if(document.getElementById("labelMeses")){
@@ -40,6 +35,10 @@ function limparFiltros(){
     if(document.getElementById("selectMeses")){
         document.getElementById("selectMeses").remove();
     }
+
+    document.getElementById("labelSetor").style.display = "none";
+    document.getElementById("setores").style.display = "none"; 
+
     document.getElementById("setores").value = "Selecione o Setor";
     if(document.getElementById("labelDepartamentos")){
         document.getElementById("labelDepartamentos").remove();
@@ -53,6 +52,9 @@ function limparFiltros(){
 document.getElementById("btnLimpar").addEventListener("click", limparFiltros); 
 
 function anosMeses(){
+    document.getElementById("labelSetor").style.display = "none";
+    document.getElementById("setores").style.display = "none";  
+
     const sectionAnosMeses = document.getElementById("anosMeses");
     
     const labelAnos = document.createElement("label");
@@ -76,6 +78,9 @@ function anosMeses(){
 
     let anoSelecionado = false;
     selectAnos.addEventListener("change", function(){
+        document.getElementById("labelSetor").style.display = "";
+        document.getElementById("setores").style.display = ""; 
+
         selectAnos.style.display = "none";
         labelAnos.style.display = "none";
         
@@ -159,6 +164,8 @@ selectSetores.addEventListener("change", function (){
     }else if(dadosAno){
         dadosFiltrados = dadosAno;
         dadosFiltrados = dadosFiltrados.filter(item => item.setor == this.value);
+    }else{
+        dadosFiltrados = dados.filter(item => item.setor == this.value);
     }
 
     listar.replaceChildren();
