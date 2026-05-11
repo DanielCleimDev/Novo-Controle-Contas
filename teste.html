@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Financeiro Inteligente</title>
+    <link rel="stylesheet" href="relatorio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><i class="fas fa-chart-line"></i> Gestão Financeira</h1>
+        <div class="summary-cards">
+            <div class="card">
+                <span>Total Filtrado</span>
+                <h2 id="total-valor">0,00€</h2>
+            </div>
+            <div class="card">
+                <span>Transações</span>
+                <h2 id="total-transacoes">0</h2>
+            </div>
+        </div>
+    </header>
+
+    <aside class="filters">
+        <div class="filter-group">
+            <label>Setor</label>
+            <select id="filter-setor">
+                <option value="all">Todos os Setores</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Departamento</label>
+            <select id="filter-departamento">
+                <option value="all">Todos os Departamentos</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Mês</label>
+            <select id="filter-mes">
+                <option value="all">Todos os Meses</option>
+                <option value="01">Janeiro</option>
+                <option value="02">Fevereiro</option>
+                <option value="03">Março</option>
+                <option value="04">Abril</option>
+                <option value="05">Maio</option>
+                <option value="06">Junho</option>
+                <option value="07">Julho</option>
+                <option value="08">Agosto</option>
+                <option value="09">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+        </div>
+    </aside>
+
+    <main>
+        <div class="table-container">
+            <table id="tabela-dados">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Descrição</th>
+                        <th>Departamento</th>
+                        <th>Meio Pagamento</th>
+                        <th>Setor</th>
+                        <th class="text-right">Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-corpo">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script type="module" src="relatorio.js"></script>
+</body>
+</html>
