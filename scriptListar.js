@@ -11,10 +11,10 @@ let total = 0;
 
 dados.sort((a, b) => new Date(b.data) - new Date(a.data));
 dados.forEach(item => {
-    total += parseInt(item.valor);
+    total += parseFloat(item.valor);
     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
 });
-atualizarTotal(total, `Soma: `);
+atualizarTotal(total, `Soma`);
 
 anosMeses()
 
@@ -102,7 +102,7 @@ function anosMeses(){
         //Calculando o total do ano selecionado
         let totalAno = 0;
             dadosAno.forEach(item =>{
-            totalAno += parseInt(item.valor);
+            totalAno += parseFloat(item.valor);
             //Populando a lista com os itens do ano selecionado
             listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
         })
@@ -135,7 +135,7 @@ function anosMeses(){
                 let totalMes = 0;
                 //Populando a lista com os itens do mês selecionado                                
                 dadosMes.forEach(item => {
-                    totalMes += parseInt(item.valor);
+                    totalMes += parseFloat(item.valor);
                     listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
                 });
                 atualizarTotal(totalMes, `Total: `);
@@ -173,7 +173,7 @@ selectSetores.addEventListener("change", function (){
     if(dadosFiltrados.length >= 0 ){
         let totalSetor = 0;
         dadosFiltrados.forEach(item => {
-            totalSetor += parseInt(item.valor);
+            totalSetor += parseFloat(item.valor);
             listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
         });
         atualizarTotal(totalSetor, `Total do Setor: `);
@@ -208,7 +208,7 @@ selectSetores.addEventListener("change", function (){
         let totalDepartamento = 0;
         if(dadosDepartamento.length >= 1){
             dadosDepartamento.forEach(item => {
-                totalDepartamento += parseInt(item.valor);
+                totalDepartamento += parseFloat(item.valor);
                 listar.appendChild(gerarCard(item.id, item.descricao, item.valor, item.departamento, item.setor, item.data, item.meioPagamento))
             });
         }

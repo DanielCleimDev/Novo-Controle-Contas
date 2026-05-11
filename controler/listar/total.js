@@ -1,5 +1,6 @@
 
 export function atualizarTotal(total, string) {
-    const ptotal = document.getElementById("total")
-    ptotal.textContent = `${string}: R$ ${total.toFixed(2)}`
+    const ptotal = document.getElementById("total").
+    textContent = `${string}: R$ ${total.
+        toLocaleString('pt-BR')}`;
 }
