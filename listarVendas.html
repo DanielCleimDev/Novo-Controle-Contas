@@ -4,20 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendas</title>
-</head>
-<body>
-    <main id="vendas">
-
-    </main>
     <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+        /* Estilos da barra de filtro por mês */
+        .filtro-header {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+        .btn-seta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: #f4f4f4;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 8px 14px;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          color: #333;
+          transition: background 0.2s;
+        }
+        .btn-seta:hover {
+          background: #e2e2e2;
+        }
+        .titulo-filtro-atual {
+          font-size: 18px;
+          font-weight: bold;
+          color: #111;
+          text-transform: capitalize;
+        }
+
+        /* Estilos dos cards */
+        #vendas {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+        }
         .venda-card {
           border: 1px solid #ddd;
           border-radius: 10px;
           padding: 16px;
+          width: 100%;
           max-width: 320px;
           box-shadow: 0 2px 8px rgba(0,0,0,.08);
           background: #fff;
-          font-family: Arial, sans-serif;
         }
         .venda-card .venda-titulo {
           margin: 0 0 12px;
@@ -37,6 +72,14 @@
           color: #111;
         }
     </style>
+</head>
+<body>
+    <!-- Barra de navegação dos meses -->
+    <header id="filtro-mes" class="filtro-header"></header>
+
+    <section id="total"></section>
+    <main id="vendas"></main>
+
     <script type="module" src="controler/vendas/listarVendas.js"></script>
 </body>
 </html>
